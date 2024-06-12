@@ -1,16 +1,18 @@
-package com.sandbox.k8s;
+package com.sandbox.k8s.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 @Slf4j
-@Component
+@Service
 public class FileService {
 
-    private static final String filePath = "/app/data/Data.txt";
+    @Value("${files.baseDir}")
+    private String filePath;
 
     public void save(String content) {
 

@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+files:
+  baseDir: "/app/data/Data.txt"
+
+data:
+  exampleUri: "https://jsonplaceholder.typicode.com/posts"
