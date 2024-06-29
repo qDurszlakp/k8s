@@ -71,12 +71,6 @@
                 <configuration>
                     <mainClass>com.sandbox.k8s.K8sApplication</mainClass>
                     <layout>JAR</layout>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
