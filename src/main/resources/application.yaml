@@ -6,3 +6,19 @@ files:
 
 data:
   exampleUri: "https://jsonplaceholder.typicode.com/posts"
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://db:5432/dev_user"
+    username: "dev_user"
+    password: "dev"
+
+  liquibase:
+    change-log: "classpath:liquibase-changeLog.xml"
+
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true

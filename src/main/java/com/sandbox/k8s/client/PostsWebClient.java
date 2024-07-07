@@ -1,6 +1,6 @@
 package com.sandbox.k8s.client;
 
-import com.sandbox.k8s.ThreadLog;
+import com.sandbox.k8s.acpect.ThreadLog;
 import com.sandbox.k8s.dto.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,4 +29,16 @@ public class PostsWebClient {
                 .bodyToMono(new ParameterizedTypeReference<List<PostDto>>() {})
                 .block();
     }
+
+    public String getPassphrase() {
+        WebClient webClient = WebClient.create();
+
+        return webClient.get()
+                .uri("http://host:8090")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
+
 }

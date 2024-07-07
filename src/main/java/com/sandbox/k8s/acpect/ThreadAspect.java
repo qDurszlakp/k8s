@@ -1,4 +1,4 @@
-package com.sandbox.k8s;
+package com.sandbox.k8s.acpect;
 
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ThreadAspect {
 
-    @Around("@annotation(ThreadLog)")
+    @Around("@annotation(com.sandbox.k8s.acpect.ThreadLog)")
     public Object logThreadInfo(ProceedingJoinPoint joinPoint) throws Throwable {
 
         val className = joinPoint.getTarget().getClass().getSimpleName();
