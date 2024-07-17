@@ -24,7 +24,6 @@ services:
     image: 'host:latest'
     container_name: host
     ports:
-      - "8090:8090"
       - "5006:5006"
     networks:
       - k8s_network

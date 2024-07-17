@@ -18,6 +18,9 @@ public class PostsWebClient {
     @Value("${data.exampleUri}")
     private String uri;
 
+    @Value("${data.passphraseUrl}")
+    private String passphraseUrl;
+
     @ThreadLog
     public List<PostDto> getAllPosts() {
         WebClient webClient = WebClient.create();
@@ -34,7 +37,7 @@ public class PostsWebClient {
         WebClient webClient = WebClient.create();
 
         return webClient.get()
-                .uri("http://host:8090")
+                .uri(passphraseUrl)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(String.class)

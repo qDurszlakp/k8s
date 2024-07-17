@@ -11,12 +11,9 @@ cd Host
 docker build -q -t host .
 cd ..
 
-#echo [2/4] Remove running containers
-#docker rm -f k8s_demo
-
-echo [3/4] Run containers
+echo [2/3] Run containers
 cd build
 docker-compose up --build -d --quiet-pull
 
-echo [4/4] Remove dangling images
+echo [3/3] Remove dangling images
 docker images -f dangling=true -q | xargs docker rmi
