@@ -6,9 +6,7 @@ networks:
 
 services:
   app:
-    image: 'k8s:latest'
-    build:
-      context: .
+    image: 'app:latest'
     container_name: application
     ports:
       - "8080:8080"
@@ -21,6 +19,17 @@ services:
       - /app/data
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
+
+  host:
+    image: 'host:latest'
+    container_name: host
+    ports:
+      - "8090:8090"
+      - "5006:5006"
+    networks:
+      - k8s_network
+    environment:
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5006,server=y,suspend=n
 
   db:
     image: 'postgres:13.1-alpine'
