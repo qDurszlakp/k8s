@@ -1,4 +1,4 @@
-echo [1/4] Build images
+echo [1/3] Build images
 
 cd ..
 mvn -q clean package
