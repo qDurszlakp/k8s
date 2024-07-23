@@ -8,20 +8,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/")
+@RestController
 @RequiredArgsConstructor
 public class RestApi {
 
     private final FileService fileService;
     private final PostsWebClient postsWebClient;
 
-    @GetMapping("cookies")
+    @GetMapping("/cookies")
     public ResponseEntity<String> cookies() {
 
         val cookies = """
@@ -35,20 +35,20 @@ public class RestApi {
         return ResponseEntity.ok(cookies);
     }
 
-    @PostMapping("cookies")
-    public ResponseEntity<Void> cookies(@RequestParam String content) {
-        fileService.save(content);
+    @PostMapping("/file/{path}")
+    public ResponseEntity<Void> cookies(@PathVariable("path") String path) {
+        fileService.save(path);
         return ResponseEntity.ok().build();
     }
 
     @ThreadLog
-    @GetMapping("tmpData")
+    @GetMapping("/tmpData")
     public ResponseEntity<List<PostDto>> posts() {
         val posts = postsWebClient.getAllPosts();
         return ResponseEntity.ok(posts);
     }
 
-    @GetMapping("tmp")
+    @GetMapping("/tmp")
     public ResponseEntity<String> tmp() {
         val pass = postsWebClient.getPassphrase();
         return ResponseEntity.ok(pass);

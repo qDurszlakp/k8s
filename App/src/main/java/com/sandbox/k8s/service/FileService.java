@@ -14,13 +14,13 @@ public class FileService {
     @Value("${files.baseDir}")
     private String filePath;
 
-    public void save(String content) {
+    public void save(String path) {
 
-        String fileName = filePath + "_" + System.currentTimeMillis();
+        String fileName = filePath + "_" + System.currentTimeMillis() + "_";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             log.info("Attempt of writing to the file: [{}]", fileName);
-            writer.append(content);
+            writer.append(path);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
