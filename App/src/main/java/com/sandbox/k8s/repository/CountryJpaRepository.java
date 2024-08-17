@@ -9,4 +9,5 @@ public interface CountryJpaRepository extends JpaRepository<Country, Long> {
 
     Optional<Country> findCountryByCode(String code);
 
+    Country save(Country entity);
 }

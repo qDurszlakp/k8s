@@ -1,4 +1,4 @@
-echo [1/3] Build images
+echo [1/4] Build images
 
 cd ..
 mvn -q clean package
@@ -11,9 +11,12 @@ cd Host
 docker build -q -t host .
 cd ..
 
-echo [2/3] Run containers
+echo [2/4] Kill containers
+docker rm -f database
+
+echo [3/4] Run containers
 cd build
 docker-compose up --build -d --quiet-pull
 
-echo [3/3] Remove dangling images
+echo [4/4] Remove dangling images
 docker images -f dangling=true -q | xargs docker rmi

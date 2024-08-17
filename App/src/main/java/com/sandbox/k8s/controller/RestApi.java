@@ -1,6 +1,6 @@
 package com.sandbox.k8s.controller;
 
-import com.sandbox.k8s.acpect.ThreadLog;
+import com.sandbox.k8s.aspect.ThreadLog;
 import com.sandbox.k8s.client.PostsWebClient;
 import com.sandbox.k8s.dto.PostDto;
 import com.sandbox.k8s.service.FileService;

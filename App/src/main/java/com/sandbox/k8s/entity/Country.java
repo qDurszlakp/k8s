@@ -1,12 +1,11 @@
 package com.sandbox.k8s.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -27,7 +26,7 @@ public class Country {
     private String code;
 
     @Column(name = "INS_TIME")
-    private LocalDateTime insertTime;
+    private ZonedDateTime insertTime;
 
     @Version
     @Column(name = "VERSION")

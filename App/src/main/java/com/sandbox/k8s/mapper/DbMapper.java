@@ -1,8 +1,6 @@
 package com.sandbox.k8s.mapper;
 
-import com.sandbox.k8s.dto.AccountDto;
-import com.sandbox.k8s.dto.CardDto;
-import com.sandbox.k8s.dto.CountryDto;
+import com.sandbox.k8s.dto.*;
 import com.sandbox.k8s.entity.Account;
 import com.sandbox.k8s.entity.Card;
 import com.sandbox.k8s.entity.Country;
@@ -17,4 +15,7 @@ public interface DbMapper {
 
     CardDto cardToCardDto(Card card);
 
+    Country countryDtoToCountry(CreateCountryDto createCountryDto);
+
+    Account accountDtoToAccount(CreateAccountDto createCountryDto);
 }

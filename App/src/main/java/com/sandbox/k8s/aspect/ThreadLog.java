@@ -1,4 +1,4 @@
-package com.sandbox.k8s.acpect;
+package com.sandbox.k8s.aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

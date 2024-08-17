@@ -33,5 +33,7 @@
 
 ````
 Run:
->./docker/run.sh
+>cd build
+> 
+>./run.sh
 

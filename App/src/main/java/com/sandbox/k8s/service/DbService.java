@@ -1,15 +1,19 @@
 package com.sandbox.k8s.service;
 
-import com.sandbox.k8s.dto.AccountDto;
-import com.sandbox.k8s.dto.CardDto;
-import com.sandbox.k8s.dto.CountryDto;
+import com.sandbox.k8s.dto.*;
+import com.sandbox.k8s.entity.Account;
+import com.sandbox.k8s.entity.Country;
 import com.sandbox.k8s.mapper.DbMapper;
 import com.sandbox.k8s.repository.AccountJpaRepository;
 import com.sandbox.k8s.repository.CardJpaRepository;
 import com.sandbox.k8s.repository.CountryJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
@@ -34,8 +38,25 @@ public class DbService {
     }
 
     public List<CountryDto> getCountries() {
-        return countryJpaRepository.findAll()
-                .stream().map(mapper::countryToCountryDto)
-                .toList();
+        return null;
+    }
+
+    public CountryDto createCountry(CreateCountryDto countryDto) {
+        Country entryCountry = mapper.countryDtoToCountry(countryDto);
+        entryCountry.setInsertTime(ZonedDateTime.now(ZoneId.of("Europe/Warsaw")));
+        Country savedEntity = countryJpaRepository.save(entryCountry);
+        return mapper.countryToCountryDto(savedEntity);
+    }
+
+    public AccountDto createAccount(CreateAccountDto accountDto) {
+        Account savedEntity = accountJpaRepository.save(mapper.accountDtoToAccount(accountDto));
+        return mapper.accountToAccountDto(savedEntity);
+    }
+
+
+    @Transactional
+    public void demo(CreateAccountDto accountDto, CreateCountryDto countryDto) {
+        createCountry(countryDto);
+        createAccount(accountDto);
     }
 }

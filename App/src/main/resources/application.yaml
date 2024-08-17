@@ -1,13 +1,6 @@
 server:
   port: 8080
 
-files:
-  baseDir: "/app/data/Data.txt"
-
-data:
-  exampleUri: "https://jsonplaceholder.typicode.com/posts"
-  passphraseUrl: "http://host:8090/"
-
 spring:
   datasource:
     url: "jdbc:postgresql://db:5432/dev_user"
@@ -23,3 +16,13 @@ spring:
       hibernate:
         format_sql: true
         highlight_sql: true
+
+files:
+  baseDir: "/app/data/Data.txt"
+
+data:
+  exampleUri: "https://jsonplaceholder.typicode.com/posts"
+  passphraseUrl: "http://host:8090/"
+
+audit:
+  patterns: '/**'

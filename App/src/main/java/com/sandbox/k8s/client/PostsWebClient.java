@@ -1,6 +1,6 @@
 package com.sandbox.k8s.client;
 
-import com.sandbox.k8s.acpect.ThreadLog;
+import com.sandbox.k8s.aspect.ThreadLog;
 import com.sandbox.k8s.dto.PostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
