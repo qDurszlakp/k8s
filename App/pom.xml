@@ -14,7 +14,6 @@
     <name>App</name>
 
 
-
     <dependencies>
 
         <!-- STARTERS -->
@@ -82,6 +81,17 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -90,7 +100,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.sandbox.k8s.K8sApplication</mainClass>
+                    <mainClass>com.sandbox.k8s.controller.K8sApplication</mainClass>
                     <layout>JAR</layout>
                     <excludes>
                         <exclude>
@@ -124,6 +134,25 @@
                             <version>${org.springframework.boot.configuration.processor.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <apiDocsUrl>http://localhost:8080/v3/api-docs.yaml</apiDocsUrl>
+                    <outputFileName>openapi.yaml</outputFileName>
+                    <outputDir>${project.basedir}/target/doc/swagger</outputDir>
+                    <skip>false</skip>
                 </configuration>
             </plugin>
         </plugins>
