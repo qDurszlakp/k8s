@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 spring:
   datasource:
     url: "jdbc:postgresql://localhost:5432/dev_user"
@@ -22,7 +19,7 @@ files:
 
 data:
   exampleUri: "https://jsonplaceholder.typicode.com/posts"
-  passphraseUrl: "http://host:8090/"
+  passphraseUrl: "http://host:8091/"
 
 audit:
   patterns: '/**'
