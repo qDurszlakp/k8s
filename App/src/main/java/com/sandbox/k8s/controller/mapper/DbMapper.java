@@ -5,6 +5,7 @@ import com.sandbox.k8s.controller.entity.Account;
 import com.sandbox.k8s.controller.entity.Card;
 import com.sandbox.k8s.controller.entity.Country;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface DbMapper {
@@ -13,6 +14,7 @@ public interface DbMapper {
 
     AccountDto accountToAccountDto(Account account);
 
+    @Mapping(source = "account.accountNumber", target = "accountNumber")
     CardDto cardToCardDto(Card card);
 
     Country countryDtoToCountry(CreateCountryDto createCountryDto);
