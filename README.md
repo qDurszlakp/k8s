@@ -1,3 +1,4 @@
+![example workflow]
 (https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml/badge.svg)
 
 ````
