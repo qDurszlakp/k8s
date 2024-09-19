@@ -1,4 +1,4 @@
-![https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml/badge.svg]
+![Integration Tests]https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml/badge.svg
 
 ````
 Hey you! This is a playground for training purposes
