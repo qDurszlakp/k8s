@@ -1,10 +1,10 @@
-````
-Hey you!
-````
-Run:
->cd build
-> 
->./run.sh
+https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml/badge.svg
 
->./run.sh --run-tests
-
+````
+Hey you! This is a playground for training purposes
+````
+**Run**
+````
+./run.sh
+./run.sh --run-tests
+````
