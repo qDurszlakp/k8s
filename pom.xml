@@ -36,6 +36,7 @@
         <postgresql.version>42.6.0</postgresql.version>
         <spring.boot.starter.test>3.3.2</spring.boot.starter.test>
         <org.springdoc.version>2.6.0</org.springdoc.version>
+        <org.testcontainers.version>1.20.1</org.testcontainers.version>
     </properties>
 
     <dependencyManagement>
@@ -127,6 +128,18 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${org.springdoc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>${org.testcontainers.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${org.testcontainers.version}</version>
             </dependency>
 
         </dependencies>

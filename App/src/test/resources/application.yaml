@@ -1,9 +1,4 @@
 spring:
-  datasource:
-    url: "jdbc:postgresql://localhost:5432/dev_user"
-    username: "dev_user"
-    password: "dev"
-
   liquibase:
     change-log: "classpath:liquibase-changeLog.xml"
 
