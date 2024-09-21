@@ -66,8 +66,8 @@ yarn-error.log
 
 ### Terraform ###
 # Local Terraform state files
-*.tfstate
-*.tfstate.backup
+*terraform.tfstate
+*terraform.tfstate.backup
 
 # Crash log files
 crash.log
