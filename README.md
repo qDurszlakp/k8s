@@ -6,5 +6,8 @@ Hey you! This is a playground for training purposes
 **Run**
 ````
 ./run.sh
-./run.sh --run-tests
+
+Available flags:
+--skip-tests
+--push-images
 ````

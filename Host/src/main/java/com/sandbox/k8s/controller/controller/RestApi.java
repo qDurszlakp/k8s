@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.SecureRandom;
 
-@RestController("/")
+@RestController
 @RequiredArgsConstructor
 public class RestApi {
 
-    @GetMapping()
+    @GetMapping("/")
     public ResponseEntity<String> cookies() {
 
         val characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
