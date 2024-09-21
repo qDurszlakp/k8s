@@ -35,21 +35,4 @@ public class DbApi {
         return ResponseEntity.status(HttpStatus.CREATED).body(dbService.createAccount(account));
     }
 
-    @PostMapping("/db/demo")
-    public ResponseEntity<Void> demo(@RequestParam("name") String name,
-                                     @RequestParam("code") String code,
-                                     @RequestParam("accountNumber") String accountNumber) {
-
-
-        CreateCountryDto country = new CreateCountryDto();
-        country.setName(name);
-        country.setCode(code);
-
-        CreateAccountDto account = new CreateAccountDto();
-        account.setAccountNumber(accountNumber);
-
-        dbService.demo(account, country);
-
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
 }

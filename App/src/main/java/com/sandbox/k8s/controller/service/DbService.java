@@ -9,7 +9,6 @@ import com.sandbox.k8s.controller.repository.CardJpaRepository;
 import com.sandbox.k8s.controller.repository.CountryJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -50,12 +49,5 @@ public class DbService {
     public AccountDto createAccount(CreateAccountDto accountDto) {
         Account savedEntity = accountJpaRepository.save(mapper.accountDtoToAccount(accountDto));
         return mapper.accountToAccountDto(savedEntity);
-    }
-
-
-    @Transactional
-    public void demo(CreateAccountDto accountDto, CreateCountryDto countryDto) {
-        createCountry(countryDto);
-        createAccount(accountDto);
     }
 }
