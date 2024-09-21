@@ -19,7 +19,7 @@ public class RestApiIntegrationTest extends AbstractDbIntegrationTest {
     @SneakyThrows
     void shouldReturnCookies() {
         // when
-        ResultActions result = mockMvc.perform(get("/cookies"));
+        ResultActions result = mockMvc.perform(get("/app/cookies"));
 
         // then
         result.andExpect(status().isOk())
