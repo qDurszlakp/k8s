@@ -63,3 +63,27 @@ yarn-error.log
 .env
 .vscode/
 .DS_Store
+
+### Terraform ###
+# Local Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash log files
+crash.log
+
+# Terraform variables files that contain sensitive information
+*.tfvars
+
+# Override files to customize existing configurations without committing to the repository
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore Terraform plan files
+*.tfplan
+
+# Ignore directory used by Terraform for dependencies
+.terraform/
+.terraform.lock.hcl
