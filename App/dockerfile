@@ -1,5 +1,16 @@
 FROM amazoncorretto:17-alpine-jdk
+
+# Set the maintainer
 MAINTAINER durszlak
+
+# Set the working directory
 WORKDIR /app
+
+# Install bash in Alpine
+RUN apk add --no-cache bash
+
+# Copy the jar file into the container
 COPY target/App-0.0.1-SNAPSHOT.jar /app/App-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/app/App-0.0.1-SNAPSHOT.jar"]
+
+# Set bash as the default shell and run the Java application
+ENTRYPOINT ["/bin/bash", "-c", "java -jar /app/App-0.0.1-SNAPSHOT.jar"]

@@ -27,4 +27,9 @@ public class RestApi {
         return ResponseEntity.ok(sb.toString().toUpperCase());
     }
 
+    @GetMapping("/foo1")
+    public ResponseEntity<String> foo1() {
+        return ResponseEntity.ok("foo1");
+    }
+
 }

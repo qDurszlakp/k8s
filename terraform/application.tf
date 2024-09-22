@@ -1,149 +1,93 @@
-resource "kubernetes_service" "demo_app_spring_service" {
+resource "kubernetes_service" "host_service" {
   metadata {
-    name = "demo-app-spring"
-    namespace = kubernetes_namespace.demo_app_ns.metadata.0.name
+    name      = "host"
+    namespace = kubernetes_namespace.sandbox_ns.metadata.0.name
     labels = {
-      app = "demo-app-spring"
+      app = "host"
     }
   }
 
   spec {
     type = "LoadBalancer"
     selector = {
-      app = "demo-app-spring"
+      app = "host"
     }
 
     port {
-      name = "http"
-      protocol = "TCP"
-      port = 8090
+      name        = "http"
+      protocol    = "TCP"
+      port        = 8090
       target_port = 8090
-      node_port = 30000
+      node_port   = 30000
     }
   }
 }
 
+resource "kubernetes_deployment" "host_deployment" {
 
-resource "kubernetes_deployment" "demo_app_spring_deployment" {
   metadata {
-    name = "demo-app-spring"
-    namespace = kubernetes_namespace.demo_app_ns.metadata.0.name
+    name      = "host"
+    namespace = kubernetes_namespace.sandbox_ns.metadata.0.name
     labels = {
-      app = "demo-app-spring"
+      app = "host"
     }
   }
-
 
   spec {
     selector {
       match_labels = {
-        app = "demo-app-spring"
+        app = "host"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "demo-app-spring"
+          app = "host"
         }
       }
 
       spec {
         container {
-          name = "demo-app-spring"
-          image = "qwerty2137/host:latest"
-          image_pull_policy = "IfNotPresent"
+          name              = "host"
+          image             = "qwerty2137/host:latest"
+          image_pull_policy = "Always"
 
           port {
-            name = "http"
+            name           = "http"
             container_port = 8090
           }
 
           resources {
             limits = {
-              cpu = 0.2
+              cpu    = 0.2
               memory = "200Mi"
             }
           }
-
-          env {
-            name = "DB_PASSWORD"
-            value_from {
-              secret_key_ref {
-                key = "postgres-user-password"
-                name = kubernetes_secret.demo_app_secret.metadata.0.name
-
-              }
-            }
-          }
-
-
-          env {
-            name = "DB_USERNAME"
-            value_from {
-              config_map_key_ref  {
-                key  = "postgres-user-username"
-                name = kubernetes_config_map.demo_app_cm.metadata.0.name
-
-              }
-            }
-          }
-
-          env {
-            name = "DB_SERVER"
-            value_from {
-              config_map_key_ref {
-                key = "postgres-server"
-                name = kubernetes_config_map.demo_app_cm.metadata.0.name
-              }
-            }
-          }
-
-          env {
-            name = "DB_NAME"
-            value_from {
-              config_map_key_ref {
-                key = "postgres-database-name"
-                name = kubernetes_config_map.demo_app_cm.metadata.0.name
-              }
-            }
-
-          }
-
-          env {
-            name = "POSTGRES_USER"
-            value_from {
-              config_map_key_ref {
-                key = "postgres-user-username"
-                name = kubernetes_config_map.demo_app_cm.metadata.0.name
-
-              }
-            }
-          }
-        }
-        image_pull_secrets {
-          name = kubernetes_secret.demo_app_secret.metadata.0.name
         }
       }
     }
   }
+
 }
 
-resource "kubernetes_ingress_v1" "demo_app_ingress" {
+resource "kubernetes_ingress_v1" "host_ingress" {
+
   metadata {
-    name      = "demo-app-ingress"
-    namespace = kubernetes_namespace.demo_app_ns.metadata.0.name
+    name      = "host-ingress"
+    namespace = kubernetes_namespace.sandbox_ns.metadata.0.name
   }
+
   spec {
     rule {
-      host = "demo-app-spring.com"
+      host = "host.com"
       http {
         path {
-          path     = "/*"
+          path      = "/*"
           path_type = "Prefix"
           backend {
             service {
-              name =  kubernetes_service.demo_app_spring_service.metadata.0.name
+              name = kubernetes_service.host_service.metadata.0.name
               port {
                 number = 90
               }
@@ -153,4 +97,5 @@ resource "kubernetes_ingress_v1" "demo_app_ingress" {
       }
     }
   }
+
 }
