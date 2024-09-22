@@ -16,8 +16,8 @@ resource "kubernetes_service" "demo_app_spring_service" {
     port {
       name = "http"
       protocol = "TCP"
-      port = 80
-      target_port = 8080
+      port = 8090
+      target_port = 8090
       node_port = 30000
     }
   }
