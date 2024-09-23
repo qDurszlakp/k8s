@@ -3,11 +3,8 @@
 ````
 Hey you! This is a playground for training purposes
 ````
-**Run**
+**Commands**
 ````
-./run.sh
-
-Available flags:
---skip-tests
---push-images
+./run_with_docker.sh
+./push_images.sh
 ````

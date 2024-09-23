@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### HELPERS ###
+################## HELPERS ##################
 function cecho() {
     # Default color is green
     local color=32
@@ -14,7 +14,7 @@ function cecho() {
     echo -e "\e[${color}m$*\e[0m"
 }
 
-### SCRIPT ###
+################## SCRIPT ##################
 
 cecho [1/2] Build images
 cd ..

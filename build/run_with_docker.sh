@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### HELPERS ###
+################## HELPERS ##################
 function cecho() {
     # Default color is green
     local color=32
@@ -14,7 +14,13 @@ function cecho() {
     echo -e "\e[${color}m$*\e[0m"
 }
 
-### SCRIPT ###
+if [[ "$1" == "--help" || "$1" == "-h" || "$1" == "-help" ]]; then
+    echo "--run-tests         Run test while build"
+    echo "--push-images       Push images to registry"
+    exit 0;
+fi
+
+################## SCRIPT ##################
 
 # Set default value for skipping tests
 SKIP_TESTS=true
