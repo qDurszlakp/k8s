@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://${DB_NAME:5432}/${DB_USERNAME}"
+    username: "${DB_USERNAME}"
+    password: "${DB_USER_PASS}"
+
+  liquibase:
+    change-log: "classpath:liquibase-changeLog.xml"
+
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+
+files:
+  baseDir: "/app/data/Data.txt"
+
+data:
+  exampleUri: "https://jsonplaceholder.typicode.com/posts"
+  passphraseUrl: "http://host:8090/"
+
+audit:
+  patterns: '/**'

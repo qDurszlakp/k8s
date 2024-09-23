@@ -1,6 +1,7 @@
 package com.sandbox.k8s.controller.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.SecureRandom;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class RestApi {
@@ -27,9 +29,15 @@ public class RestApi {
         return ResponseEntity.ok(sb.toString().toUpperCase());
     }
 
-    @GetMapping("/foo1")
-    public ResponseEntity<String> foo1() {
-        return ResponseEntity.ok("foo1");
+    @GetMapping("/foo")
+    public ResponseEntity<String> foo() {
+
+        val className = this.getClass().getSimpleName();
+        val message = String.format("[THREAD MONITOR]: %s: %s", className, Thread.currentThread().getName());
+
+        log.info(message);
+
+        return ResponseEntity.ok(message);
     }
 
 }

@@ -14,6 +14,8 @@ function cecho() {
     echo -e "\e[${color}m$*\e[0m"
 }
 
+### SCRIPT ###
+
 cecho [1/2] Build images
 cd ..
 mvn -q clean package -DskipTests

@@ -12,5 +12,5 @@ RUN apk add --no-cache bash
 # Copy the jar file into the container
 COPY target/App-0.0.1-SNAPSHOT.jar /app/App-0.0.1-SNAPSHOT.jar
 
-# Set bash as the default shell and run the Java application
-ENTRYPOINT ["/bin/bash", "-c", "java -jar /app/App-0.0.1-SNAPSHOT.jar"]
+# Set bash as the default shell and run the Java application with JAVA_OPTS
+ENTRYPOINT ["/bin/bash", "-c", "java $JAVA_OPTS -jar /app/App-0.0.1-SNAPSHOT.jar"]

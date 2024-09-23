@@ -15,16 +15,13 @@ resource "kubernetes_service" "host_service" {
 
     port {
       name        = "http"
-      protocol    = "TCP"
       port        = 8090
       target_port = 8090
-      node_port   = 30000
     }
   }
 }
 
 resource "kubernetes_deployment" "host_deployment" {
-
   metadata {
     name      = "host"
     namespace = kubernetes_namespace.sandbox_ns.metadata.0.name
@@ -34,6 +31,9 @@ resource "kubernetes_deployment" "host_deployment" {
   }
 
   spec {
+
+    replicas = "2"
+
     selector {
       match_labels = {
         app = "host"
@@ -60,19 +60,17 @@ resource "kubernetes_deployment" "host_deployment" {
 
           resources {
             limits = {
-              cpu    = 0.2
-              memory = "200Mi"
+              cpu    = 0.4
+              memory = "400Mi"
             }
           }
         }
       }
     }
   }
-
 }
 
 resource "kubernetes_ingress_v1" "host_ingress" {
-
   metadata {
     name      = "host-ingress"
     namespace = kubernetes_namespace.sandbox_ns.metadata.0.name
@@ -97,5 +95,4 @@ resource "kubernetes_ingress_v1" "host_ingress" {
       }
     }
   }
-
 }
