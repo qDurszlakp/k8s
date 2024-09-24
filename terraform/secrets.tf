@@ -6,8 +6,7 @@ resource "kubernetes_secret" "db_secret" {
   }
 
   data = {
-    # Base64-encoded password
-    db-password = "ZGV2"
+    db-password = "dev"
   }
 }
 
