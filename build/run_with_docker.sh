@@ -26,7 +26,7 @@ fi
 SKIP_TESTS=true
 SKIP_IMAGES_PUSH=true
 
-# Check if the user provided an argument for skipping tests
+# Check if the user provided an argument for running tests
 for arg in "$@"; do
     if [ "$arg" == "--run-tests" ]; then
         SKIP_TESTS=false
@@ -34,7 +34,7 @@ for arg in "$@"; do
     fi
 done
 
-# Check if the user provided an argument for skipping docker push
+# Check if the user provided an argument for docker push
 for arg in "$@"; do
     if [ "$arg" == "--push-images" ]; then
         SKIP_IMAGES_PUSH=false

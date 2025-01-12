@@ -3,6 +3,13 @@
 ````
 Hey you! This is a playground for training purposes.
 
+Stack: 
+Java
+Spring Boot
+PostgresSql
+Terraform
+Docker
+k8s
 ````
 **Commands**
 ````
@@ -10,3 +17,8 @@ Hey you! This is a playground for training purposes.
 ./push_images.sh        - Build and push images to docker registry.
 ./run_with_k8s.sh       - Build and run the project on local k8s cluster.
 ````
+
+```
+k8s:
+terraform apply -var 'registry_password=<YOUR_DOCKER_HUB_PASSWORD>' -auto-approve
+```
