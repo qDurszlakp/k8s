@@ -36,7 +36,7 @@
         <postgresql.version>42.6.0</postgresql.version>
         <spring.boot.starter.test>3.3.2</spring.boot.starter.test>
         <org.springdoc.version>2.6.0</org.springdoc.version>
-        <org.testcontainers.version>1.20.1</org.testcontainers.version>
+        <org.testcontainers.version>1.20.5</org.testcontainers.version>
     </properties>
 
     <dependencyManagement>
