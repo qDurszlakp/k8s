@@ -1,6 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "extends": ["config:base"],
+  "enabledManagers": ["maven"],
+  "maven": {
+    "enabled": true,
+    "rangeStrategy": "update-lockfile",
+    "groupName": "Maven Dependencies",
+    "separateMinorPatch": true
+  },
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchPackagePatterns": [".*"],
+      "groupName": "Maven Dependencies"
+    }
   ]
 }
