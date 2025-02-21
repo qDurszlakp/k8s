@@ -22,7 +22,7 @@
         <java.version>17</java.version>
         <liquibase.core.version>4.24.0</liquibase.core.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-        <org.projectlombok.version>1.18.22</org.projectlombok.version>
+        <org.projectlombok.version>1.18.36</org.projectlombok.version>
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
         <org.springframework.boot.configuration.processor.version>2.4.13</org.springframework.boot.configuration.processor.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
@@ -32,8 +32,8 @@
         <spring.boot.starter.webflux.version>3.2.12</spring.boot.starter.webflux.version>
         <spring.boot.starter.web.version>3.2.12</spring.boot.starter.web.version>
         <spring.boot.starter.aop.version>3.2.12</spring.boot.starter.aop.version>
-        <reactor.core.version>3.5.3</reactor.core.version>
-        <postgresql.version>42.6.0</postgresql.version>
+        <reactor.core.version>3.5.20</reactor.core.version>
+        <postgresql.version>42.6.2</postgresql.version>
         <spring.boot.starter.test>3.3.9</spring.boot.starter.test>
         <org.springdoc.version>2.6.0</org.springdoc.version>
         <org.testcontainers.version>1.20.5</org.testcontainers.version>
