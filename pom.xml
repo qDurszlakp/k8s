@@ -24,7 +24,7 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.36</org.projectlombok.version>
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
-        <org.springframework.boot.configuration.processor.version>2.4.13</org.springframework.boot.configuration.processor.version>
+        <org.springframework.boot.configuration.processor.version>3.4.3</org.springframework.boot.configuration.processor.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <spring.boot.starter.version>3.2.12</spring.boot.starter.version>
         <spring.boot.starter.jdbc.version>3.2.12</spring.boot.starter.jdbc.version>
