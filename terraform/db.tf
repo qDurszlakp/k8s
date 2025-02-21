@@ -75,7 +75,7 @@ resource "kubernetes_deployment" "db_deployment" {
 
       spec {
         container {
-          image = "postgres:13"
+          image = "postgres:17"
           name = "postgres"
 
           env {
