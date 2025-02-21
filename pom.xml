@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.12</version>
         <relativePath/>
     </parent>
 
@@ -24,17 +24,17 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.22</org.projectlombok.version>
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
-        <org.springframework.boot.configuration.processor.version>2.4.1</org.springframework.boot.configuration.processor.version>
+        <org.springframework.boot.configuration.processor.version>2.4.13</org.springframework.boot.configuration.processor.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-        <spring.boot.starter.version>3.2.1</spring.boot.starter.version>
-        <spring.boot.starter.jdbc.version>3.2.1</spring.boot.starter.jdbc.version>
-        <spring.boot.starter.data.jpa.version>3.2.1</spring.boot.starter.data.jpa.version>
-        <spring.boot.starter.webflux.version>3.2.1</spring.boot.starter.webflux.version>
-        <spring.boot.starter.web.version>3.2.1</spring.boot.starter.web.version>
-        <spring.boot.starter.aop.version>3.2.1</spring.boot.starter.aop.version>
+        <spring.boot.starter.version>3.2.12</spring.boot.starter.version>
+        <spring.boot.starter.jdbc.version>3.2.12</spring.boot.starter.jdbc.version>
+        <spring.boot.starter.data.jpa.version>3.2.12</spring.boot.starter.data.jpa.version>
+        <spring.boot.starter.webflux.version>3.2.12</spring.boot.starter.webflux.version>
+        <spring.boot.starter.web.version>3.2.12</spring.boot.starter.web.version>
+        <spring.boot.starter.aop.version>3.2.12</spring.boot.starter.aop.version>
         <reactor.core.version>3.5.3</reactor.core.version>
         <postgresql.version>42.6.0</postgresql.version>
-        <spring.boot.starter.test>3.3.2</spring.boot.starter.test>
+        <spring.boot.starter.test>3.3.9</spring.boot.starter.test>
         <org.springdoc.version>2.6.0</org.springdoc.version>
         <org.testcontainers.version>1.20.1</org.testcontainers.version>
     </properties>
