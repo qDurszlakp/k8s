@@ -3,6 +3,7 @@ package com.sandbox.k8s.controller.controller;
 import com.sandbox.k8s.controller.aspect.ThreadLog;
 import com.sandbox.k8s.controller.client.PostsWebClient;
 import com.sandbox.k8s.controller.dto.PostDto;
+import com.sandbox.k8s.controller.exception.BasicException;
 import com.sandbox.k8s.controller.service.FileService;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -52,5 +53,10 @@ public class RestApi {
     public ResponseEntity<String> tmp() {
         val pass = postsWebClient.getPassphrase();
         return ResponseEntity.ok(pass);
+    }
+
+    @GetMapping("/risk")
+    public ResponseEntity<Void> risk() {
+        throw new BasicException("Exception here!");
     }
 }
