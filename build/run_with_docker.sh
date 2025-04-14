@@ -69,14 +69,12 @@ else
     cecho skipped
 fi
 
-cecho [3/5] Kill containers
-docker rm -f database
-
-cecho [4/5] Run containers
+cecho [3/4] Ensure clean environment and run containers 
 cd build
-docker-compose up --build -d --quiet-pull
+cecho "  Stopping existing docker-compose containers (if any)..."
+docker-compose down --remove-orphans
+cecho "  Starting new containers..."
+docker-compose up --build -d --quiet-pull 
 
-cecho [5/5] Remove dangling images
+cecho [4/4] Remove dangling images
 docker images -f dangling=true -q | xargs docker rmi
-
-
