@@ -14,8 +14,8 @@ import java.security.SecureRandom;
 @RequiredArgsConstructor
 public class RestApi {
 
-    @GetMapping("/")
-    public ResponseEntity<String> cookies() {
+    @GetMapping("/passphrase")
+    public ResponseEntity<String> passphrase() {
 
         val characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         val random = new SecureRandom();
@@ -27,17 +27,6 @@ public class RestApi {
         }
 
         return ResponseEntity.ok(sb.toString().toUpperCase());
-    }
-
-    @GetMapping("/foo")
-    public ResponseEntity<String> foo() {
-
-        val className = this.getClass().getSimpleName();
-        val message = String.format("[THREAD MONITOR]: %s: %s", className, Thread.currentThread().getName());
-
-        log.info(message);
-
-        return ResponseEntity.ok(message);
     }
 
 }
