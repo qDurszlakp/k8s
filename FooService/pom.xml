@@ -9,9 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Host</artifactId>
+    <artifactId>FooService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Host</name>
+    <name>FooService</name>
 
     <dependencies>
 

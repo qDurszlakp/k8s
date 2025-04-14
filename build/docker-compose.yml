@@ -5,9 +5,12 @@ networks:
     driver: bridge
 
 services:
-  app:
-    image: 'app:latest'
-    container_name: application
+  server:
+    build:
+      context: ../Server
+      dockerfile: dockerfile
+    image: 'server:latest'
+    container_name: server
     ports:
       - "8080:8080"
       - "5005:5005"
@@ -20,9 +23,12 @@ services:
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
 
-  host:
-    image: 'host:latest'
-    container_name: host
+  fooservice:
+    build:
+      context: ../FooService
+      dockerfile: dockerfile
+    image: 'fooservice:latest'
+    container_name: fooservice
     networks:
       - k8s_network
     environment:
