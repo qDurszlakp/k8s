@@ -43,14 +43,14 @@ public class RestApi {
     }
 
     @ThreadLog
-    @GetMapping("/tmpData")
+    @GetMapping("/posts")
     public ResponseEntity<List<PostDto>> posts() {
         val posts = postsWebClient.getAllPosts();
         return ResponseEntity.ok(posts);
     }
 
     @GetMapping("/passphrase")
-    public ResponseEntity<String> tmp() {
+    public ResponseEntity<String> passphrase() {
         val pass = postsWebClient.getPassphrase();
         return ResponseEntity.ok(pass);
     }

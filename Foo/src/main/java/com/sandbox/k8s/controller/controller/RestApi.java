@@ -29,15 +29,4 @@ public class RestApi {
         return ResponseEntity.ok(sb.toString().toUpperCase());
     }
 
-    @GetMapping("/foo")
-    public ResponseEntity<String> foo() {
-
-        val className = this.getClass().getSimpleName();
-        val message = String.format("[THREAD MONITOR]: %s: %s", className, Thread.currentThread().getName());
-
-        log.info(message);
-
-        return ResponseEntity.ok(message);
-    }
-
 }

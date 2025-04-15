@@ -14,7 +14,7 @@
     <artifactId>k8s</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>k8s</name>
+    <name>fen</name>
     <description>k8s</description>
     <packaging>pom</packaging>
 
