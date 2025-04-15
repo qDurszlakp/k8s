@@ -9,8 +9,13 @@ WORKDIR /app
 # Install bash in Alpine
 RUN apk add --no-cache bash
 
+# Set the port
+ENV PORT=8081
+
 # Copy the jar file into the container
-COPY target/Host-0.0.1-SNAPSHOT.jar /app/Host-0.0.1-SNAPSHOT.jar
+COPY target/Foo-0.0.1-SNAPSHOT.jar /app/Foo-0.0.1-SNAPSHOT.jar
+
+EXPOSE $PORT
 
 # Set bash as the default shell and run the Java application
-ENTRYPOINT ["/bin/bash", "-c", "java -jar /app/Host-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["/bin/bash", "-c", "java -jar /app/Foo-0.0.1-SNAPSHOT.jar"]

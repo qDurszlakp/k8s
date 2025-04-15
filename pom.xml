@@ -152,8 +152,8 @@
     </dependencyManagement>
 
     <modules>
-        <module>App</module>
-        <module>Host</module>
+        <module>Server</module>
+        <module>Foo</module>
     </modules>
 
 </project>

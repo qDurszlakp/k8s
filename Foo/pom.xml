@@ -9,9 +9,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Host</artifactId>
+    <artifactId>Foo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Host</name>
+    <name>Foo</name>
+    <description>Foo module for Spring Boot</description>
 
     <dependencies>
 

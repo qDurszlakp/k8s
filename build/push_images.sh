@@ -20,17 +20,17 @@ cecho [1/2] Build images
 cd ..
 mvn -q clean package -DskipTests
 
-cd App
-docker build -q -t app .
+cd Server
+docker build -q -t server .
 cd ..
 
-cd Host
-docker build -q -t host .
+cd Foo
+docker build -q -t foo .
 cd ..
 
 cecho [2/2] Build tags and push images to repository
 
-docker tag app qwerty2137/app:latest
-docker tag host qwerty2137/host:latest
-docker push -q qwerty2137/app:latest
-docker push -q qwerty2137/host:latest
+docker tag server qwerty2137/server:latest
+docker tag foo qwerty2137/foo:latest
+docker push -q qwerty2137/server:latest
+docker push -q qwerty2137/foo:latest
