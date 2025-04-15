@@ -13,7 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Server</name>
 
-
     <dependencies>
 
         <!-- STARTERS -->
@@ -117,7 +116,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.sandbox.k8s.ServerApplication</mainClass>
+                    <mainClass>com.sandbox.server.ServerApplication</mainClass>
                     <layout>JAR</layout>
                     <excludes>
                         <exclude>
@@ -157,19 +156,10 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-maven-plugin</artifactId>
                 <version>1.4</version>
-                <executions>
-                    <execution>
-                        <id>integration-test</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <apiDocsUrl>http://localhost:8080/v3/api-docs.yaml</apiDocsUrl>
                     <outputFileName>openapi.yaml</outputFileName>
                     <outputDir>${project.basedir}/target/doc/swagger</outputDir>
-                    <skip>false</skip>
                 </configuration>
             </plugin>
         </plugins>

@@ -21,7 +21,7 @@
     <properties>
         <java.version>17</java.version>
         <liquibase.core.version>4.31.1</liquibase.core.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+<!--        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>-->
         <org.projectlombok.version>1.18.36</org.projectlombok.version>
         <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
         <org.springframework.boot.configuration.processor.version>3.4.3</org.springframework.boot.configuration.processor.version>

@@ -16,12 +16,14 @@ services:
       - "5005:5005"
     depends_on:
       - db
+      - kafka
     networks:
       - k8s_network
     volumes:
       - /app/data
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
 
   fooservice:
     build:
@@ -29,10 +31,13 @@ services:
       dockerfile: dockerfile
     image: 'fooservice:latest'
     container_name: fooservice
+    depends_on:
+      - kafka
     networks:
       - k8s_network
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5006,server=y,suspend=n
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
 
   db:
     image: 'postgres:17.3-alpine'
@@ -44,3 +49,31 @@ services:
     environment:
       - POSTGRES_USER=dev_user
       - POSTGRES_PASSWORD=dev
+
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - k8s_network
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    container_name: kafka
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+    networks:
+      - k8s_network
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=INTERNAL://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
