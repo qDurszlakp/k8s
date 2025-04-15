@@ -40,7 +40,7 @@ services:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
 
   db:
-    image: 'postgres:17.3-alpine'
+    image: 'postgres:17.4-alpine'
     container_name: database
     networks:
       - k8s_network
