@@ -160,6 +160,7 @@
     <modules>
         <module>Server</module>
         <module>Foo</module>
+        <module>Util</module>
     </modules>
 
 </project>

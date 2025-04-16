@@ -1,5 +1,6 @@
 package com.sandbox.foo.service;
 
+import com.sandbox.util.kafka.KafkaTopicNames;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class LoggingService {
 
-    private static final String KAFKA_TOPIC = "TOPIC_1";
+    private static final String KAFKA_TOPIC = KafkaTopicNames.FOO_LOGGING_TOPIC;
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
@@ -21,6 +22,8 @@ public class LoggingService {
     public void logMessage() {
         String randomUUID = UUID.randomUUID().toString();
         String message = "[Foo] Random log message: " + randomUUID;
+
+        log.info("Generated message: {}", message);
 
         try {
             kafkaTemplate.send(KAFKA_TOPIC, message);

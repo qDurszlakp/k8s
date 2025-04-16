@@ -110,6 +110,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- INTERNAL DEPENDENCIES -->
+        <dependency>
+            <groupId>com.sandbox</groupId>
+            <artifactId>Util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.sandbox</groupId>
+        <artifactId>fen</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath> <!-- Ensure correct path to parent -->
+    </parent>
+
+    <artifactId>Util</artifactId>
+    <!-- version is inherited from parent -->
+    <name>Util</name>
+    <description>Utility module for shared constants and configurations</description>
+
+    <dependencies>
+        <!-- No specific dependencies needed for just constants currently -->
+        <!-- Add Lombok if utility classes with annotations are planned -->
+        <!--
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+         -->
+    </dependencies>
+
+    <!-- No specific build section needed for a simple library module -->
+
+</project> 
