@@ -20,14 +20,11 @@ public class LoggingService {
 
     @Scheduled(fixedRate = 10000)
     public void logMessage() {
-        String randomUUID = UUID.randomUUID().toString();
-        String message = "[Foo] Random log message: " + randomUUID;
 
-        log.info("Generated message: {}", message);
+        String message = "[Foo] Log message: " + UUID.randomUUID().toString();
 
         try {
             kafkaTemplate.send(KAFKA_TOPIC, message);
-            log.debug("Message sent to Kafka topic {}: {}", KAFKA_TOPIC, message);
         } catch (Exception e) {
             log.error("Error sending message to Kafka topic {}: {}", KAFKA_TOPIC, e.getMessage(), e);
         }
