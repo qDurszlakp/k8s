@@ -12,26 +12,27 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/app")
 public class DbApi {
 
     public final DbService dbService;
 
-    @GetMapping("/db/accounts")
+    @GetMapping("/accounts")
     public ResponseEntity<List<AccountDto>> accounts() {
         return ResponseEntity.ok(dbService.getAccounts());
     }
 
-    @GetMapping("/db/cards")
+    @GetMapping("/cards")
     public ResponseEntity<List<CardDto>> cards() {
         return ResponseEntity.ok(dbService.getCards());
     }
 
-    @PostMapping("/db/country")
+    @PostMapping("/country")
     public ResponseEntity<CountryDto> createCountry(@RequestBody CreateCountryDto country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(dbService.createCountry(country));
     }
 
-    @PostMapping("/db/account")
+    @PostMapping("/account")
     public ResponseEntity<AccountDto> createAccount(@RequestBody CreateAccountDto account) {
         return ResponseEntity.status(HttpStatus.CREATED).body(dbService.createAccount(account));
     }
