@@ -11,11 +11,10 @@
     </parent>
 
     <groupId>com.sandbox</groupId>
-    <artifactId>k8s</artifactId>
+    <artifactId>fen</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>fen</name>
-    <description>k8s</description>
     <packaging>pom</packaging>
 
     <properties>

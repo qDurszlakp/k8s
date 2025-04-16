@@ -1,4 +1,4 @@
-[![Integration Tests](https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml/badge.svg)](https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml)
+[![Integration Tests](https://github.com/qDurszlakp/fen/actions/workflows/maven.yml/badge.svg)](https://github.com/qDurszlakp/k8s/actions/workflows/maven.yml)
 
 ````
 Hey you! This is a playground for training purposes.

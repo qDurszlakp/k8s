@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  k8s_network:
+  fen_network:
     driver: bridge
 
 services:
@@ -18,7 +18,7 @@ services:
       - db
       - kafka
     networks:
-      - k8s_network
+      - fen_network
     volumes:
       - /app/data
     environment:
@@ -34,7 +34,7 @@ services:
     depends_on:
       - kafka
     networks:
-      - k8s_network
+      - fen_network
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,address=*:5006,server=y,suspend=n
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
@@ -43,7 +43,7 @@ services:
     image: 'postgres:17.3-alpine'
     container_name: database
     networks:
-      - k8s_network
+      - fen_network
     ports:
       - "5432:5432"
     environment:
@@ -56,7 +56,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - k8s_network
+      - fen_network
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
@@ -67,7 +67,7 @@ services:
       - "9092:9092"
       - "9093:9093"
     networks:
-      - k8s_network
+      - fen_network
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
