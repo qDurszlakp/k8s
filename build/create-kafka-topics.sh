@@ -6,12 +6,22 @@ BOOTSTRAP_SERVER="kafka:9092"
 MAX_RETRIES=10
 SLEEP_INTERVAL=15
 
+# --- Define Topics to Create --- 
+# Format: "topic_name;partitions;replication_factor"
+declare -a TOPICS_TO_CREATE=(
+    "TOPIC_1;1;1"
+    # Add more topics here following the same format
+    # "ANOTHER_TOPIC;3;1"
+    # "YET_ANOTHER;5;1"
+)
+
+# --- Wait for Kafka --- 
 echo "Waiting for Kafka ($BOOTSTRAP_SERVER) to be ready..."
 
-# Wait for Kafka using kafka-topics.sh --list
 kafka_ready=false
 retry_count=0
 while [ $retry_count -lt $MAX_RETRIES ]; do
+  # Try listing topics to check readiness
   if /opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server $BOOTSTRAP_SERVER --list > /dev/null 2>&1; then
     echo "Kafka is ready!"
     kafka_ready=true
@@ -28,19 +38,43 @@ if [ "$kafka_ready" = false ]; then
   exit 1
 fi
 
-echo "Creating topic '$TOPIC_NAME'..."
+# --- Create Topics --- 
+echo "Processing topics..."
 
-# Create my topic
+# Get the list of existing topics ONCE
+existing_topics=$(/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server $BOOTSTRAP_SERVER --list)
+echo "Existing topics:"
+# Print existing topics
+echo "${existing_topics:-<none>}"
 
-TOPIC_1_NAME="TOPIC_1"
-TOPIC_1_PARTITIONS=1
-TOPIC_1_REPLICATION_FACTOR=1
+# Loop through the defined topics
+for topic_def in "${TOPICS_TO_CREATE[@]}"; do
+    # Parse the definition string
+    IFS=';' read -r topic_name partitions replication_factor <<< "$topic_def"
 
-/opt/bitnami/kafka/bin/kafka-topics.sh --create \
-  --topic $TOPIC_1_NAME \
-  --bootstrap-server $BOOTSTRAP_SERVER \
-  --partitions $TOPIC_1_PARTITIONS \
-  --replication-factor $TOPIC_1_REPLICATION_FACTOR
+    echo "Checking topic '$topic_name'..."
 
-echo "Topic creation finished."
+    # Check if the topic exists in the list retrieved earlier
+    # Use grep -q with -x to match the whole line exactly
+    if echo "$existing_topics" | grep -q -x "$topic_name"; then
+        echo "  Topic '$topic_name' already exists. Skipping creation."
+    else
+        echo "  Topic '$topic_name' does not exist. Creating with P=$partitions, R=$replication_factor..."
+        /opt/bitnami/kafka/bin/kafka-topics.sh --create \
+          --topic "$topic_name" \
+          --bootstrap-server $BOOTSTRAP_SERVER \
+          --partitions "$partitions" \
+          --replication-factor "$replication_factor"
+        
+        # Optional: Verify creation
+        if [ $? -eq 0 ]; then
+            echo "  Topic '$topic_name' created successfully."
+        else
+            echo "  ERROR: Failed to create topic '$topic_name'."
+            # Consider adding 'exit 1' here if creation failure should stop the script
+        fi
+    fi
+done
+
+echo "Topic processing finished."
 exit 0
