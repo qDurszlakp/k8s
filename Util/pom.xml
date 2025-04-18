@@ -11,22 +11,15 @@
     </parent>
 
     <artifactId>Util</artifactId>
-    <!-- version is inherited from parent -->
     <name>Util</name>
     <description>Utility module for shared constants and configurations</description>
 
     <dependencies>
-        <!-- No specific dependencies needed for just constants currently -->
-        <!-- Add Lombok if utility classes with annotations are planned -->
-        <!--
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
-         -->
     </dependencies>
 
-    <!-- No specific build section needed for a simple library module -->
-
-</project> 
+</project>

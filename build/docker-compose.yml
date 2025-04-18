@@ -17,6 +17,7 @@ services:
     depends_on:
       - db
       - kafka
+      - kafka-setup
     networks:
       - fen_network
     volumes:
@@ -33,6 +34,7 @@ services:
     container_name: foo
     depends_on:
       - kafka
+      - kafka-setup
     networks:
       - fen_network
     environment:
